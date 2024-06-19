@@ -1,4 +1,4 @@
-virtualenv venv
+#virtualenv venv
 venv/Scrip/activate
 pip install -r requirements.txt
 cd ec
