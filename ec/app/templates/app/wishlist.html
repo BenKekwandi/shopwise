@@ -1,0 +1,32 @@
+{% extends "app/base.html" %}
+
+{% block title %}Category{% endblock title %}
+
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="text-center">
+            <h1>WISHLIST</h1>
+        </div>
+        <div class="row justify-content-center mt-5">
+        {% for prod in products %}
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100">
+                <img src="{{ prod.product_image.url }}" class="card-img-top" alt="{{ prod.name }}" style="width: 100%; height: 200px; object-fit: contain;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ prod.name }}</h5>
+                    <p class="card-text font-weight: 600">Boravin Price: <span style="font-style: italic;"><a href="{{ prod.url_boravin }}" target="_blank">{{ prod.boravin_price }}</a></span></p>
+                    <p class="card-text font-weight: 600">Beyaz Price: <span style="font-style: italic;"><a href="{{ prod.url_beyaz }}" target="_blank">{{ prod.beyaz_price }}</a></span></p>
+                    <p class="card-text" style="font-weight: 600; color: red;">
+                        <span style="font-style: italic;">Price Difference: {{ prod.price_difference|floatformat:2 }}</span>
+                    </p>
+                    <a href="/remove-from-wishlist/{{prod.id}}" class="btn btn-primary">Remove from Wishlist</a>
+                    <a href="/product/{{prod.id}}" class="btn btn-primary">View Product</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+{% endblock main-content %}
